@@ -1,33 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Generic
+namespace FindMaximumValue
 {
-    public class FindMaxNumber
+    public class FindMax
     {
-
-        public static float FindMax(float firstNum, float secondNum, float thirdNum)
+        public void ToCompare(float a, float b, float c)
         {
-            if (firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) >= 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) >= 0))
+            if (a.CompareTo(b) > 0 && a.CompareTo(c) > 0)
             {
-                return firstNum;
+                Console.WriteLine($"{a} is Maximum");
             }
-            if (secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) >= 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) >= 0))
+            else if (b.CompareTo(a) > 0 && b.CompareTo(c) > 0)
             {
-                return secondNum;
+                Console.WriteLine($"{b} is Maximum");
             }
-            if (thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) >= 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) >= 0))
+            else
             {
-                return thirdNum;
+                Console.WriteLine($"{c} is Maximum");
             }
-            return default;
         }
     }
 }

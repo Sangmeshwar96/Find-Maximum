@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FindMaximumValue;
+using System;
 
 namespace Generic
 {
@@ -7,10 +8,12 @@ namespace Generic
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Find Maximum of Numbers ");
-            //int maxNum = FindMaxNumber.FindMax(20, 10, 20);
-            float maxNum = FindMaxNumber.FindMax(0.2f, 0.1f, 0.0f);
-            Console.WriteLine(maxNum);
+            Console.WriteLine("Welcome To Generics Program To Find The Maximum Values");
+            Console.WriteLine(" ");
+            FindMax check = new FindMax();
+            check.ToCompare(3, 2, 1);
+            check.ToCompare(3.2f, 2.1f, 1.9f);
+
         }
     }
 }
