@@ -1,103 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Generic
+namespace FindMaximumValue
 {
-    public class FindMaxNumber
+    public class Find<T> where T : IComparable 
     {
-
-        public static int FindMax(int firstNum, int secondNum, int thirdNum)
+        public T[] values;
+        public Find(T[] values)
         {
-            if (firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) >= 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) >= 0))
-            {
-                return firstNum;
-            }
-            if (secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) >= 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) >= 0))
-            {
-                return secondNum;
-            }
-            if (thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) >= 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) >= 0))
-            {
-                return thirdNum;
-            }
-            return default;
+            this.values = values;
         }
-
-        public static float FindMax(float firstNum, float secondNum, float thirdNum)
+        public T[] Sorting(T[] values)
         {
-            if (firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) >= 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) >= 0))
-            {
-                return firstNum;
-            }
-            if (secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) >= 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) >= 0))
-            {
-                return secondNum;
-            }
-            if (thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) >= 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) >= 0))
-            {
-                return thirdNum;
-            }
-            return default;
+            Array.Sort(values);
+            return values;
         }
-
-        public static string FindMax(string firstNum, string secondNum, string thirdNum)
+        public T ToCompare(params T[] values)
         {
-            if (firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) >= 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) >= 0))
-            {
-                return firstNum;
-            }
-            if (secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) >= 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) >= 0))
-            {
-                return secondNum;
-            }
-            if (thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) >= 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) >= 0))
-            {
-                return thirdNum;
-            }
-            return default;
+            T[] compare = Sorting(values);
+            return compare[^1];
         }
-
-        public static T FindMax<T>(T firstNum, T secondNum, T thirdNum)
+        public void Max()
         {
-            if (Comparer<T>.Default.Compare(firstNum, secondNum) > 0 && Comparer<T>.Default.Compare(firstNum, thirdNum) > 0 ||
-            Comparer<T>.Default.Compare(firstNum, secondNum) > 0 && Comparer<T>.Default.Compare(firstNum, thirdNum) > 0 ||
-            Comparer<T>.Default.Compare(firstNum, secondNum) > 0 && Comparer<T>.Default.Compare(firstNum, thirdNum) > 0)
-            {
-                return firstNum;
-            }
-            if (Comparer<T>.Default.Compare(secondNum, firstNum) > 0 && Comparer<T>.Default.Compare(secondNum, thirdNum) > 0 ||
-           Comparer<T>.Default.Compare(secondNum, firstNum) > 0 && Comparer<T>.Default.Compare(secondNum, thirdNum) > 0 ||
-           Comparer<T>.Default.Compare(secondNum, firstNum) > 0 && Comparer<T>.Default.Compare(secondNum, thirdNum) > 0)
-            {
-                return secondNum;
-            }
-            if (Comparer<T>.Default.Compare(thirdNum, firstNum) > 0 && Comparer<T>.Default.Compare(thirdNum, secondNum) > 0 ||
-          Comparer<T>.Default.Compare(thirdNum, firstNum) > 0 && Comparer<T>.Default.Compare(thirdNum, secondNum) > 0 ||
-          Comparer<T>.Default.Compare(thirdNum, firstNum) > 0 && Comparer<T>.Default.Compare(thirdNum, secondNum) > 0)
-            {
-                return thirdNum;
-            }
-            return default;
+            T max = ToCompare(this.values);
+            Console.WriteLine($"{max} is maximum");
         }
-
     }
+
 }
