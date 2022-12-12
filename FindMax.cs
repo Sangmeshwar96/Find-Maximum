@@ -1,33 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Generic
+namespace FindMaximumValue
 {
-    public class FindMaxNumber
+    public class FindMax
     {
-
-        public static int FindMax(int firstNum, int secondNum, int thirdNum)
+        public class Find<T> where T : IComparable //class type generics
         {
-            if (firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) >= 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) >= 0))
+            public T a, b, c;
+            public Find(T a, T b, T c)
             {
-                return firstNum;
+                this.a = a;
+                this.b = b;
+                this.c = c;
             }
-            if (secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) >= 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) >= 0))
+
+            public static T ToCompare(T a, T b, T c)
             {
-                return secondNum;
+                if (a.CompareTo(b) > 0 && a.CompareTo(c) > 0 ||
+                    a.CompareTo(b) >= 0 && a.CompareTo(c) > 0 ||
+                    a.CompareTo(b) > 0 && a.CompareTo(c) >= 0)
+                {
+                    return a;
+                }
+                else if (b.CompareTo(a) > 0 && b.CompareTo(c) > 0 ||
+                    b.CompareTo(a) >= 0 && b.CompareTo(c) > 0 ||
+                    b.CompareTo(a) > 0 && b.CompareTo(c) >= 0)
+                {
+                    return b;
+                }
+                else
+                {
+                    return c;
+                }
             }
-            if (thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) >= 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) >= 0))
+            public void Max()
             {
-                return thirdNum;
+                T max = Find<T>.ToCompare(this.a, this.b, this.c);
+                Console.WriteLine($"{max} is maximum");
             }
-            return default;
         }
+
+
     }
 }
