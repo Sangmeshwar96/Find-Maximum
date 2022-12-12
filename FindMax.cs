@@ -7,7 +7,7 @@ namespace Generic
     public class FindMaxNumber
     {
 
-        public static int FindMax(int firstNum, int secondNum, int thirdNum)
+        public static float FindMax(float firstNum, float secondNum, float thirdNum)
         {
             if (firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) > 0) ||
                 firstNum.CompareTo(secondNum) >= 0 && (firstNum.CompareTo(thirdNum) > 0) ||
