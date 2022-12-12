@@ -1,33 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Generic
+namespace FindMaximumValue
 {
-    public class FindMaxNumber
+    public class Find<T> where T : IComparable
     {
-
-        public static int FindMax(int firstNum, int secondNum, int thirdNum)
+        public T[] values;
+        public Find(T[] values)
         {
-            if (firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) >= 0 && (firstNum.CompareTo(thirdNum) > 0) ||
-                firstNum.CompareTo(secondNum) > 0 && (firstNum.CompareTo(thirdNum) >= 0))
-            {
-                return firstNum;
-            }
-            if (secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) >= 0 && (secondNum.CompareTo(thirdNum) > 0) ||
-                secondNum.CompareTo(firstNum) > 0 && (secondNum.CompareTo(thirdNum) >= 0))
-            {
-                return secondNum;
-            }
-            if (thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) >= 0 && (thirdNum.CompareTo(secondNum) > 0) ||
-                thirdNum.CompareTo(firstNum) > 0 && (thirdNum.CompareTo(secondNum) >= 0))
-            {
-                return thirdNum;
-            }
-            return default;
+            this.values = values;
+        }
+        public T[] Sorting(T[] values)
+        {
+            Array.Sort(values);
+            return values;
+        }
+        public T ToCompare(params T[] values)
+        {
+            T[] compare = Sorting(values);
+            return compare[^1];
+        }
+        public T Max()
+        {
+            T max = ToCompare(this.values);
+            return max;
+        }
+        public void PrintMax()
+        {
+            T max = ToCompare(this.values);
+            Console.WriteLine($"{max} is Maximum");
         }
     }
+
 }
